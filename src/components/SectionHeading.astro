@@ -1,0 +1,18 @@
+---
+// Çalışmalarımız ve Paketlerimiz bölümlerinin ortak başlık düzeni.
+interface Props {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+}
+
+const { id, title, subtitle, description } = Astro.props;
+---
+
+<div class="section-heading">
+  <h2 class="section-heading__title" id={id}>{title}</h2>
+  <p class="section-heading__subtitle">{subtitle}</p>
+  <p class="section-heading__description">{description}</p>
+  <div class="section-heading__action"><slot /></div>
+</div>

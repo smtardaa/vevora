@@ -1,0 +1,56 @@
+---
+import Icon from './Icon.astro';
+import { contactChannels, isChannelActive, opensExternally } from '../data/contact';
+import { sectionIds } from '../data/navigation';
+import { getDictionary, type Locale } from '../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+---
+
+<section class="section section--contact" id={sectionIds.contact} aria-labelledby="contact-title">
+  <div class="container">
+    <div class="contact__heading">
+      <p class="contact__eyebrow">{t.contact.eyebrow}</p>
+      <h2 class="contact__title" id="contact-title">{t.contact.title}</h2>
+    </div>
+
+    <ul class="contact-grid" role="list">
+      {
+        contactChannels.map((channel) => {
+          const name = t.contact.channels[channel.id];
+          const content = (
+            <>
+              <span class="contact-card__icon">
+                <Icon name={channel.icon} size={18} />
+              </span>
+              <span class="contact-card__name">{name}</span>
+              <span class="contact-card__value">{isChannelActive(channel) ? channel.value : t.common.soonLong}</span>
+            </>
+          );
+          return (
+            <li>
+              {isChannelActive(channel) ? (
+                <a
+                  class="contact-card"
+                  href={channel.href!}
+                  {...(opensExternally(channel) ? { target: '_blank', rel: 'noopener' } : {})}
+                >
+                  {content}
+                </a>
+              ) : (
+                <div class="contact-card contact-card--inactive" aria-disabled="true">
+                  {content}
+                </div>
+              )}
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+</section>

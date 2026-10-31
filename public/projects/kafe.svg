@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400">
+  <!-- VEVORA konsept önizlemesi: kafe -->
+  <rect width="640" height="400" fill="#eeeeee"/>
+  <rect x="40" y="32" width="560" height="368" rx="12" fill="#faf7f2"/>
+  <rect x="40" y="32" width="560" height="30" rx="12" fill="#f1ece4"/>
+  <rect x="40" y="50" width="560" height="12" fill="#f1ece4"/>
+  <circle cx="58" cy="47" r="4" fill="#d6cfc3"/><circle cx="72" cy="47" r="4" fill="#d6cfc3"/><circle cx="86" cy="47" r="4" fill="#d6cfc3"/>
+  <rect x="64" y="82" width="39" height="9" rx="5" fill="#4a3426"/>
+  <rect x="404" y="82" width="40" height="6" rx="3" fill="#cbbfae"/><rect x="454" y="82" width="40" height="6" rx="3" fill="#cbbfae"/><rect x="504" y="82" width="40" height="6" rx="3" fill="#cbbfae"/>
+  <rect x="64" y="140" width="157" height="17" rx="9" fill="#2d1f16"/>
+  <rect x="64" y="174" width="329" height="17" rx="9" fill="#2d1f16"/>
+  <rect x="64" y="210" width="200" height="7" rx="3.5" fill="#d8ccbb"/>
+  <rect x="64" y="224" width="150" height="7" rx="3.5" fill="#d8ccbb"/>
+  <rect x="64" y="248" width="104" height="30" rx="15" fill="#4a3426"/>
+  <rect x="80" y="260" width="72" height="6" rx="3" fill="#faf7f2"/>
+  <rect x="344" y="116" width="232" height="168" rx="14" fill="#e9dccb"/>
+  <ellipse cx="460" cy="236" rx="62" ry="12" fill="#d3c0a6"/>
+  <path d="M414 170 h92 v44 a30 30 0 0 1 -30 30 h-32 a30 30 0 0 1 -30 -30 z" fill="#ffffff"/>
+  <path d="M506 184 a14 14 0 0 1 0 28" fill="none" stroke="#ffffff" stroke-width="7"/>
+  <ellipse cx="460" cy="172" rx="46" ry="8" fill="#7a5238"/>
+  <rect x="64" y="310" width="160" height="62" rx="10" fill="#ffffff"/>
+  <rect x="78" y="324" width="70" height="7" rx="3.5" fill="#4a3426"/><rect x="78" y="340" width="110" height="6" rx="3" fill="#ddd3c5"/><rect x="78" y="352" width="86" height="6" rx="3" fill="#ddd3c5"/>
+  <rect x="240" y="310" width="160" height="62" rx="10" fill="#ffffff"/>
+  <rect x="254" y="324" width="60" height="7" rx="3.5" fill="#4a3426"/><rect x="254" y="340" width="110" height="6" rx="3" fill="#ddd3c5"/><rect x="254" y="352" width="76" height="6" rx="3" fill="#ddd3c5"/>
+  <rect x="416" y="310" width="160" height="62" rx="10" fill="#ffffff"/>
+  <rect x="430" y="324" width="80" height="7" rx="3.5" fill="#4a3426"/><rect x="430" y="340" width="110" height="6" rx="3" fill="#ddd3c5"/><rect x="430" y="352" width="96" height="6" rx="3" fill="#ddd3c5"/>
+</svg>

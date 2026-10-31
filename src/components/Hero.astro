@@ -1,0 +1,45 @@
+---
+import { navById, sectionIds } from '../data/navigation';
+import { brand } from '../data/site';
+import { getDictionary, type Locale } from '../i18n';
+import { withBase } from '../utils/url';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+
+const actions = [
+  { label: t.hero.actions.packages, href: `#${sectionIds.packages}`, variant: 'primary' },
+  { label: t.hero.actions.contact, href: navById('contact').href!, variant: 'secondary' },
+  { label: t.hero.actions.brief, href: navById('brief').href!, variant: 'secondary' },
+];
+---
+
+<section class="hero" id={sectionIds.top} aria-labelledby="hero-title">
+  <div class="container hero__inner">
+    <h1 class="hero__title" id="hero-title">
+      <img
+        class="hero__logo"
+        src={withBase(brand.logoLarge.src)}
+        width={brand.logoLarge.width}
+        height={brand.logoLarge.height}
+        alt={t.hero.title}
+        fetchpriority="high"
+      />
+    </h1>
+    <ul class="hero__actions" role="list">
+      {
+        actions.map((action) => (
+          <li>
+            <a class:list={['button', `button--${action.variant}`]} href={action.href}>
+              {action.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

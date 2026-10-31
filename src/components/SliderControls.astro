@@ -1,0 +1,22 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  prevLabel: string;
+  nextLabel: string;
+  controls: string;
+}
+
+const { prevLabel, nextLabel, controls } = Astro.props;
+---
+
+<div class="slider-controls" data-slider-controls hidden>
+  <button class="slider-button" type="button" aria-controls={controls} data-slider-prev>
+    <Icon name="chevronLeft" size={20} />
+    <span class="visually-hidden">{prevLabel}</span>
+  </button>
+  <button class="slider-button" type="button" aria-controls={controls} data-slider-next>
+    <Icon name="chevronRight" size={20} />
+    <span class="visually-hidden">{nextLabel}</span>
+  </button>
+</div>

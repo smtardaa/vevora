@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400">
+  <!-- VEVORA konsept önizlemesi: mimarlık stüdyosu -->
+  <rect width="640" height="400" fill="#eeeeee"/>
+  <rect x="40" y="32" width="560" height="368" rx="12" fill="#ffffff"/>
+  <rect x="40" y="32" width="560" height="30" rx="12" fill="#f4f4f4"/>
+  <rect x="40" y="50" width="560" height="12" fill="#f4f4f4"/>
+  <circle cx="58" cy="47" r="4" fill="#d0d0d0"/><circle cx="72" cy="47" r="4" fill="#d0d0d0"/><circle cx="86" cy="47" r="4" fill="#d0d0d0"/>
+  <rect x="64" y="84" width="64" height="7" rx="4" fill="#111111"/>
+  <rect x="456" y="84" width="34" height="5" rx="2.5" fill="#bdbdbd"/><rect x="500" y="84" width="34" height="5" rx="2.5" fill="#bdbdbd"/><rect x="544" y="84" width="32" height="5" rx="2.5" fill="#111111"/>
+  <rect x="64" y="114" width="320" height="200" rx="4" fill="#dcdcdc"/>
+  <path d="M64 314 L64 236 L170 176 L170 314 Z" fill="#c4c4c4"/>
+  <path d="M170 314 L170 176 L300 210 L300 314 Z" fill="#b2b2b2"/>
+  <path d="M300 314 L300 210 L384 236 L384 314 Z" fill="#a3a3a3"/>
+  <rect x="196" y="236" width="20" height="40" fill="#e9e9e9"/><rect x="232" y="242" width="20" height="40" fill="#e9e9e9"/>
+  <rect x="400" y="114" width="176" height="94" rx="4" fill="#e6e6e6"/>
+  <rect x="400" y="220" width="176" height="94" rx="4" fill="#d1d1d1"/>
+  <path d="M420 194 L488 134 L556 194 Z" fill="#c8c8c8"/>
+  <rect x="420" y="246" width="136" height="2" fill="#ffffff"/><rect x="420" y="266" width="136" height="2" fill="#ffffff"/><rect x="420" y="286" width="136" height="2" fill="#ffffff"/>
+  <rect x="64" y="337" width="272" height="11" rx="6" fill="#111111"/>
+  <rect x="64" y="362" width="160" height="6" rx="3" fill="#d6d6d6"/>
+  <rect x="456" y="342" width="120" height="26" rx="13" fill="none" stroke="#111111" stroke-width="1.5"/>
+  <rect x="478" y="352" width="76" height="6" rx="3" fill="#111111"/>
+</svg>

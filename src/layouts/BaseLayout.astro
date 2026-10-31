@@ -1,0 +1,56 @@
+---
+import '../styles/global.css';
+import { brand } from '../data/site';
+import { getDictionary, locales, localePath, localeInfo, defaultLocale, type Locale } from '../i18n';
+import { withBase } from '../utils/url';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+
+// Mutlak adresler `site` (yalnızca köken) + base yolu dahil dil yolundan üretilir.
+const absolute = (path: string) => new URL(path, Astro.site).href;
+const canonical = absolute(localePath(locale));
+const current = localeInfo(locale);
+---
+
+<!doctype html>
+<html lang={locale} class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{t.meta.title}</title>
+    <meta name="description" content={t.meta.description} />
+    <meta name="theme-color" content={brand.themeColor} />
+    <meta name="color-scheme" content="light" />
+    <link rel="icon" type="image/png" href={withBase(brand.favicon)} />
+    <link rel="canonical" href={canonical} />
+    {locales.map((l) => <link rel="alternate" hreflang={l.code} href={absolute(localePath(l.code))} />)}
+    <link rel="alternate" hreflang="x-default" href={absolute(localePath(defaultLocale))} />
+    <link rel="sitemap" type="application/xml" href={withBase('/sitemap.xml')} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={brand.name} />
+    <meta property="og:title" content={t.meta.title} />
+    <meta property="og:description" content={t.meta.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={current.ogLocale} />
+    {
+      locales
+        .filter((l) => l.code !== locale)
+        .map((l) => <meta property="og:locale:alternate" content={l.ogLocale} />)
+    }
+    <script is:inline>
+      document.documentElement.classList.replace('no-js', 'js');
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{t.common.skipToContent}</a>
+    <slot />
+    <script>
+      import '../scripts/main';
+    </script>
+  </body>
+</html>

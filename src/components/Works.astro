@@ -1,0 +1,137 @@
+---
+import Icon from './Icon.astro';
+import SectionHeading from './SectionHeading.astro';
+import SliderControls from './SliderControls.astro';
+import { allWorksLink, sectionIds } from '../data/navigation';
+import { projects, projectImageSize } from '../data/projects';
+import { getDictionary, type Locale } from '../i18n';
+import { withBase } from '../utils/url';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+const trackId = 'works-track';
+---
+
+<section class="section section--works" id={sectionIds.works} aria-labelledby="works-title">
+  <div class="container">
+    <SectionHeading
+      id="works-title"
+      title={t.works.title}
+      subtitle={t.works.subtitle}
+      description={t.works.description}
+    >
+      {
+        allWorksLink.status === 'active' && allWorksLink.href ? (
+          <a class="text-link" href={allWorksLink.href}>
+            {t.works.allLink}
+          </a>
+        ) : (
+          <span class="text-link text-link--soon" aria-disabled="true">
+            {t.works.allLink}
+            <span class="soon-badge">{t.common.soon}</span>
+            <span class="visually-hidden">. {t.works.allLinkSoonNote}</span>
+          </span>
+        )
+      }
+    </SectionHeading>
+
+    <div class="slider slider--works" data-slider>
+      <ul class="slider__track" id={trackId} role="list" tabindex="0" aria-label={t.works.sliderLabel} data-slider-track>
+        {
+          projects.map((project) => {
+            const copy = t.works.projects[project.id];
+            const dialogId = `project-dialog-${project.id}`;
+            return (
+              <li class="slider__item">
+                <article class="project-card" aria-labelledby={`project-${project.id}`}>
+                  <div class="project-card__media">
+                    <img
+                      src={withBase(project.image)}
+                      width={projectImageSize.width}
+                      height={projectImageSize.height}
+                      alt={t.works.previewAlt(copy.name)}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="project-card__body">
+                    <ul class="tag-list" role="list">
+                      {project.concept && <li class="tag tag--accent">{t.works.conceptTag}</li>}
+                      <li class="tag">{copy.sector}</li>
+                    </ul>
+                    <h3 class="project-card__title" id={`project-${project.id}`}>
+                      {copy.name}
+                    </h3>
+                    {project.url ? (
+                      <a class="text-link" href={project.url} target="_blank" rel="noopener">
+                        {t.works.viewProject}
+                        <Icon name="chevronRight" size={16} />
+                      </a>
+                    ) : (
+                      // JavaScript yoksa görsel dosyasının kendisine gider; varsa önizleme penceresini açar.
+                      <a
+                        class="text-link"
+                        href={withBase(project.image)}
+                        data-dialog-open={dialogId}
+                        aria-haspopup="dialog"
+                      >
+                        {t.works.viewProject}
+                        <span class="visually-hidden">: {copy.name}</span>
+                        <Icon name="chevronRight" size={16} />
+                      </a>
+                    )}
+                  </div>
+                </article>
+              </li>
+            );
+          })
+        }
+      </ul>
+      <SliderControls prevLabel={t.works.prev} nextLabel={t.works.next} controls={trackId} />
+    </div>
+  </div>
+
+  {
+    projects
+      .filter((project) => !project.url)
+      .map((project) => {
+        const copy = t.works.projects[project.id];
+        return (
+          <dialog
+            class="project-dialog"
+            id={`project-dialog-${project.id}`}
+            aria-labelledby={`project-dialog-title-${project.id}`}
+            data-dialog
+          >
+            <div class="project-dialog__inner">
+              <div class="project-dialog__head">
+                <div>
+                  <p class="tag tag--accent">{t.works.conceptTag}</p>
+                  <h3 class="project-dialog__title" id={`project-dialog-title-${project.id}`}>
+                    {copy.name}
+                  </h3>
+                </div>
+                <button class="icon-button" type="button" data-dialog-close>
+                  <Icon name="close" size={20} />
+                  <span class="visually-hidden">{t.works.dialogClose}</span>
+                </button>
+              </div>
+              <img
+                class="project-dialog__image"
+                src={withBase(project.image)}
+                width={projectImageSize.width}
+                height={projectImageSize.height}
+                alt={t.works.previewAlt(copy.name)}
+                loading="lazy"
+              />
+              <p class="project-dialog__summary">{copy.summary}</p>
+            </div>
+          </dialog>
+        );
+      })
+  }
+</section>

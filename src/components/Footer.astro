@@ -1,0 +1,72 @@
+---
+import Icon from './Icon.astro';
+import { activeChannels, opensExternally } from '../data/contact';
+import { footerLinks, navById, sectionIds } from '../data/navigation';
+import { brand } from '../data/site';
+import { getDictionary, type Locale } from '../i18n';
+import { withBase } from '../utils/url';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+const channels = activeChannels();
+const buildYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__top">
+      <div class="site-footer__brand">
+        <a href={`#${sectionIds.top}`} aria-label={t.common.homeLinkLabel}>
+          <img
+            class="logo-tile logo-tile--footer"
+            src={withBase(brand.logoSmall.src)}
+            width={brand.logoSmall.width}
+            height={brand.logoSmall.height}
+            alt=""
+            loading="lazy"
+          />
+        </a>
+        <p class="site-footer__tagline">{t.footer.tagline}</p>
+      </div>
+
+      <nav class="site-footer__nav" aria-label={t.footer.linksLabel}>
+        <ul role="list">
+          {
+            footerLinks.map((id) => (
+              <li>
+                <a href={navById(id).href!}>{t.nav.items[id]}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      {
+        channels.length > 0 && (
+          <ul class="site-footer__social" role="list" aria-label={t.footer.socialLabel}>
+            {channels.map((channel) => (
+              <li>
+                <a
+                  href={channel.href!}
+                  aria-label={t.contact.channels[channel.id]}
+                  {...(opensExternally(channel) ? { target: '_blank', rel: 'noopener' } : {})}
+                >
+                  <Icon name={channel.icon} size={18} />
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+
+    <p class="site-footer__copy">
+      © <span data-current-year>{buildYear}</span>
+      {t.footer.copyright}
+    </p>
+  </div>
+</footer>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400">
+  <!-- VEVORA konsept önizlemesi: koleksiyon mağazası -->
+  <rect width="640" height="400" fill="#eeeeee"/>
+  <rect x="40" y="32" width="560" height="368" rx="12" fill="#ffffff"/>
+  <rect x="40" y="32" width="560" height="30" rx="12" fill="#f4f4f4"/>
+  <rect x="40" y="50" width="560" height="12" fill="#f4f4f4"/>
+  <circle cx="58" cy="47" r="4" fill="#d0d0d0"/><circle cx="72" cy="47" r="4" fill="#d0d0d0"/><circle cx="86" cy="47" r="4" fill="#d0d0d0"/>
+  <rect x="64" y="83" width="93" height="8" rx="4" fill="#1c1c1c"/>
+  <rect x="380" y="82" width="36" height="6" rx="3" fill="#cfcfcf"/><rect x="426" y="82" width="36" height="6" rx="3" fill="#cfcfcf"/><rect x="472" y="82" width="36" height="6" rx="3" fill="#cfcfcf"/>
+  <rect x="534" y="78" width="42" height="16" rx="8" fill="#2e4540"/>
+  <rect x="64" y="122" width="234" height="14" rx="7" fill="#111111"/>
+  <rect x="64" y="150" width="190" height="7" rx="3.5" fill="#d9d9d9"/>
+  <g>
+    <rect x="64" y="180" width="120" height="120" rx="10" fill="#e8e3da"/>
+    <rect x="94" y="206" width="60" height="70" rx="6" fill="#c9bda8"/>
+    <rect x="64" y="310" width="90" height="7" rx="3.5" fill="#2b2b2b"/>
+    <rect x="64" y="324" width="56" height="6" rx="3" fill="#bdbdbd"/>
+  </g>
+  <g>
+    <rect x="198" y="180" width="120" height="120" rx="10" fill="#dfe6e4"/>
+    <circle cx="258" cy="240" r="32" fill="#9fb5ae"/>
+    <rect x="198" y="310" width="80" height="7" rx="3.5" fill="#2b2b2b"/>
+    <rect x="198" y="324" width="50" height="6" rx="3" fill="#bdbdbd"/>
+  </g>
+  <g>
+    <rect x="332" y="180" width="120" height="120" rx="10" fill="#e6e6e6"/>
+    <rect x="360" y="214" width="64" height="52" rx="4" fill="#bcbcbc"/>
+    <rect x="332" y="310" width="96" height="7" rx="3.5" fill="#2b2b2b"/>
+    <rect x="332" y="324" width="44" height="6" rx="3" fill="#bdbdbd"/>
+  </g>
+  <g>
+    <rect x="466" y="180" width="110" height="120" rx="10" fill="#ece6dc"/>
+    <path d="M497 270 L521 206 L545 270 Z" fill="#c7b391"/>
+    <rect x="466" y="310" width="76" height="7" rx="3.5" fill="#2b2b2b"/>
+    <rect x="466" y="324" width="52" height="6" rx="3" fill="#bdbdbd"/>
+  </g>
+  <rect x="64" y="350" width="512" height="1" fill="#eeeeee"/>
+</svg>

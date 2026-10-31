@@ -1,0 +1,65 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import SliderControls from './SliderControls.astro';
+import { navById, sectionIds } from '../data/navigation';
+import { packages } from '../data/packages';
+import { getDictionary, type Locale } from '../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+const contactHref = navById('contact').href!;
+const trackId = 'packages-track';
+---
+
+<section class="section section--packages" id={sectionIds.packages} aria-labelledby="packages-title">
+  <div class="container">
+    <SectionHeading
+      id="packages-title"
+      title={t.packages.title}
+      subtitle={t.packages.subtitle}
+      description={t.packages.description}
+    >
+      <a class="text-link" href={contactHref}>{t.packages.contactLink}</a>
+    </SectionHeading>
+
+    <div class="packages" data-slider>
+      <ul class="packages__grid" id={trackId} role="list" tabindex="0" aria-label={t.packages.sliderLabel} data-slider-track>
+        {
+          packages.map((pkg) => {
+            const copy = t.packages.items[pkg.id];
+            return (
+              <li class="packages__item">
+                <article class="package-card" aria-labelledby={`package-${pkg.id}`}>
+                  <p class="tag">{t.packages.types[pkg.type]}</p>
+                  <h3 class="package-card__title" id={`package-${pkg.id}`}>
+                    {copy.name}
+                  </h3>
+                  <p class="package-card__summary">{copy.summary}</p>
+                  <ul class="package-card__scope" role="list" aria-label={t.packages.scopeListLabel}>
+                    {copy.scope.map((line) => (
+                      <li>{line}</li>
+                    ))}
+                  </ul>
+                  <a
+                    class="button button--primary button--block"
+                    href={contactHref}
+                    aria-label={t.packages.ctaLabel(copy.name)}
+                  >
+                    {t.packages.cta}
+                  </a>
+                </article>
+              </li>
+            );
+          })
+        }
+      </ul>
+      <SliderControls prevLabel={t.packages.prev} nextLabel={t.packages.next} controls={trackId} />
+    </div>
+
+    <p class="packages__note">{t.packages.note}</p>
+  </div>
+</section>

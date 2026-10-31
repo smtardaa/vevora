@@ -1,0 +1,7 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "vevora-preview", "runtimeExecutable": "npx", "runtimeArgs": ["astro", "preview", "--port", "4321"], "port": 4321 },
+    { "name": "vevora-static", "runtimeExecutable": "python", "runtimeArgs": ["-m", "http.server", "4330", "--directory", "dist"], "port": 4330 }
+  ]
+}

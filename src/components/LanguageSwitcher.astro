@@ -1,0 +1,40 @@
+---
+import Icon from './Icon.astro';
+import { sectionHashes } from '../data/navigation';
+import { getDictionary, locales, localePath, localeInfo, type Locale } from '../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getDictionary(locale);
+const current = localeInfo(locale);
+---
+
+<div class="lang" data-lang data-sections={sectionHashes.join(' ')}>
+  <button class="lang__button" type="button" aria-expanded="false" aria-controls="lang-menu" data-lang-toggle>
+    <span aria-hidden="true">{current.short}</span>
+    <Icon name="chevronDown" size={16} class="lang__chevron" />
+    <span class="visually-hidden">{t.language.change}. {t.language.label}: {current.name}</span>
+  </button>
+  <ul class="lang__menu" id="lang-menu" role="list" aria-label={t.language.label} data-lang-menu>
+    {
+      locales.map((l) => (
+        <li>
+          <a
+            class="lang__option"
+            href={localePath(l.code)}
+            hreflang={l.code}
+            lang={l.code}
+            aria-current={l.code === locale ? 'page' : undefined}
+            data-lang-link
+          >
+            <span>{l.name}</span>
+            {l.code === locale && <Icon name="check" size={16} class="lang__check" />}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
